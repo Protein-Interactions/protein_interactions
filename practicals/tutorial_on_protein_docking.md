@@ -10,17 +10,15 @@ ClusPro run: up to a few hours
 ## Protein-protein interaction prediction using docking (ClusPro)
 
 > ## Learning Objectives
->
-> * Learners can describe the biological context of the MKK7-Gadd45B interaction
-> * Learners can identify the restraints to limit docking conformations
-> * Learners can predict the MKK7-Gadd45B complex using ClusPro
-> * Learners can use restraints to filter docking solutions
-> * Learners can critically explore ClusPro results
+> At the end of this tutorial, learners will be able to
+> - Describe the biological context of the MKK7-Gadd45B interaction
+> - Identify the interaction restraints to narrow the 
+> - Parse PDB files
+> - Launch a job on ClusPro to generate docking solutions for the MKK7-Gadd45B complex
 
+In this tutorial you are going to predict and analyse the structural complex between the human MKK7 and Gadd45B protein structures. Before we start using bioinformatics tools and resources, we will learn something about these two proteins and their interaction. 
 
-In this tutorial you are going to predict and analyse the structural complex between the human MKK7 and Gadd45B protein structures. Before we start using bioinformatics tools and resources, we have to learn something about these two proteins and their interaction. 
-
-> Studying the literature and having a good grasp on the biological problem you are dealing with, is essential to take full advantage of predictions. Predictions are simply predictions until you don't analyse them in the light of the knowledge deriving from wet experiments.
+> Studying the literature and having a good grasp on the biological problem at hand is essential to take full advantage of predictions. Predictions are just predictions until you don't analyse them in the light of the knowledge deriving from wet experiments.
 
 ## The biological background: MKK7 and Gadd45B
 
@@ -30,7 +28,7 @@ NF-kB/Rel factors control programmed cell death, and this control is crucial to 
 
 The formation of the Gadd45β-MKK7 complex **enables insertion of the Gadd45β acidic loop 1 into the MKK7 catalytic pocket**, where this could engage in H-bonds and polar interactions with MKK7 Lys149 and other residues normally binding to the three-phosphate group of ATP. This engagement of the MKK7 ATP-binding site by Gadd45β loop 1 seems to prevent access of the kinase to ATP.
 Therefore, **the Gadd45β-MKK7 complex formation inhibits MKK7 by preventing it from binding ATP**.
-They also found that residues within putative Gadd45β acidic loops 1 and 2 – i.e. **Glu65, Glu66 and Glu113** – directly contact basic residues within the catalytic pocket of MKK7 – i.e **Lys149, Lys157 and Arg162**. In particular, as shown in the figure below (figure 9C from Papa et al. 2007) inter chain hydrogen bonds form between the following residues:
+They also found that residues within putative Gadd45β acidic loops 1 and 2 – i.e. **Glu65, Glu66 and Glu113** – directly contact basic residues within the catalytic pocket of MKK7 – i.e **Lys149, Lys157 and Arg162**. In particular, as shown in the figure below (figure 9C from Papa et al. 2007), inter chain hydrogen bonds form between the following residues:
 
 MKK7 residue | Gadd45β residue
 :-------------:|:----------------:
@@ -45,19 +43,38 @@ Figure 9C from Papa et al.2007
 
 ## Sharpening your pencils
 
-Before starting the actual study of the interaction, we need to do a number of things to get ready.
+Before starting the actual study of the interaction, we need to do a number of things to get ready. Indeed, we need to obtain the three dimensional structure of Gadd45β and MKK7 and identify the position, in the two structures, of the interacting residues (E65, E66 and E113 on Gadd45β and K149, R162 and K157 on MKK7).
+
+At the moment of updating these materials (May 2020), a structure for Gadd45β is not available in the PDB. Therefore, we will have to build a model by homology of the protein.
+
+```
+Note: 
+One of the purposes of this tutorial is to give learners 
+the chance to run a docking job using a 3D model, therefore, 
+even when a 3D structure of Gadd45β will be available, you 
+are encouraged to keep using the model instead of the 
+3D structure determined experimentally. 
+Ideally, it would be an extremely interesting exercise 
+to run ClusPro with the 3D model **and** with the 
+experimentally determined structure, and then analyse 
+and compare the results.*
+```
+
+
+Therefore, the tasks we have to accomplish to get ready to study the interaction between Gadd45β and MKK7 are the following:
 
 1. Build the homology model of Gadd45β
-2. Retrieve the crystal structure of the most suitable conformation for MKK7
-3. Identify appropriate restraints to limit the number of docking conformations
+2. Retrieve the "most suitable" crystal structure of MKK7
+3. Identify the position of the residues known to interact on Gadd45β and MKK7 (this will make it possible to specify some restraints in the ClusPro input, thus reducing the conformational space search).
 
 Once we have collected these data, we will be ready to use [ClusPro](http://cluspro.bu.edu/home.php)to predict the MKK7-Gadd45β complex.
 
 ```
 Note:
-In the following you will need Gadd45β and MKK7 UniprotKB accession 
-numbers (ACs). 
-I suggest that you go to [UniprotKB](http://www.uniprot.org) and retrieve them. Remember that we are using the human proteins! 
+In the following you will need Gadd45β and MKK7 UniprotKB 
+accession numbers (ACs). 
+I suggest that you go to [UniprotKB](http://www.uniprot.org) 
+and retrieve them. Remember that we are using the human proteins! 
 If you know well UniprotKB or you are too lazy, here they are:
 
 Gadd45β UniprotKB AC: O75293 
@@ -66,45 +83,66 @@ MKK7 UniprotKB AC: O14733
 ```
 
 ### 1. Build the homology model of Gadd45β
-At the time of writing, the crystal structure of Gadd45β is not available in the PDB. Therefore, we will use a homology model of Gadd45β. If you want to learn how to **build the homology model** of Gadd45β using HHPred (http://toolkit.tuebingen.mpg.de/hhpred), an online resource for homology modelling and more, you can follow the step-by-step [tutorial on homology modelling](tutorial_on_homology_modelling.md). For the purposes of this tutorial, you can download the model provided in the [pdb](https://github.com/aidanbudd/ppisnd/blob/4eb1724d5d9ce5dbd184288b0e2db304bf3c493d/trainingMaterial/allegraVia/PPI/data/pdb.tar.gz) folder and go to the next step.
+At the time of writing, the crystal structure of Gadd45β is not available in the PDB. Therefore, we will use a homology model of Gadd45β. If you want to learn how to **build the homology model** of Gadd45β using HHPred (http://toolkit.tuebingen.mpg.de/hhpred), an online resource for homology modelling and more, you can follow the step-by-step [tutorial on homology modelling](tutorial_on_homology_modelling.md). For the purposes of this tutorial, you can download the model provided in the [pdb folder](https://github.com/Protein-Interactions/protein_interactions/tree/master/practicals/data/pdb) and go to the next step.
 
 ### 2. Retrieve the crystal structure of the most appropriate conformation for MKK7
 
-If you are already familiar with the Protein Data Bank (PDB) and/or want to quickly go to the next step, you can directly download the MKK7 3D structure (6QFL.pdb) from the [pdb](https://github.com/aidanbudd/ppisnd/blob/4eb1724d5d9ce5dbd184288b0e2db304bf3c493d/trainingMaterial/allegraVia/PPI/data/pdb.tar.gz) folder and skip the rest of this section. 6QFL was selected based on procedure and features described below.
+If you are already familiar with the Protein Data Bank (PDB) and/or want to quickly go to the next step, you can directly download the MKK7 3D structure (6QFL.pdb) from the [pdb folder](https://github.com/Protein-Interactions/protein_interactions/tree/master/practicals/data/pdb) and skip the rest of this section. 6QFL was selected based on procedure and features described below.
 
 If you want to learn how to use the PDB to retrieve structural information and search for specific PDB files, or want to know how 6QFL was selected, keep reading this section.
 
 The crystal structure of MKK7 is available in the **Protein Data Bank (PDB)** and we want to identify the PDB code of the most suitable structure. What do we mean by "most suitable structure"? It depends on the problem at hand. 
 
 In this specific case, we want one of the *crystal structures* corresponding to UniProt AC **O14733**. As we need the structure for a docking experiment, we would like a structure with the following features:
+
 - high resolution (< 2.3 Angstroms)
-- not in complex with ligand(s) (otherwise we have to manually remove ligands from the PDB file before using the structure in the docking experiment)
 - ideally, in the conformation binding Gadd45β
 - ideally, we would like to work with the native protein (i.e., not a mutant)
+- not in complex with ligand(s); otherwise we would have to manually remove ligands from the PDB file before using the structure in the docking experiment.
+
+```
+Note:
+If you were able to identify a PDB structure for MKK7 
+in complex with a ligand **binding MKK7 in the same 
+pocket as Gadd45β**, you should pick this one, and 
+manually remove the ligand from the PDB file. 
+This would be a example of a pseudo-native conformation 
+for MKK7, namely a structure complexed with a molecule 
+different from the one used for the docking experiment.
+```
 
 #### Procedure to select a high-resolution PDB structure for MKK7, not in complex with ligand(s): 
 
 a) Go to the [PDB](http://www.rcsb.org/pdb/home/home.do)
+This is how the PDB homepage looks as per the moment of writing (May 2020):
 
-b) Click on "Advanced search".
-In the "Choose a Query Type" drop down menu choose "UniProtKB Accession Number(s)" and paste the MKK7 UniProt AC (**O14733**) in the text box.
-Click on "Result Count". 
+<img src= "img/pdb_homepage.png" width="75%">
+
+
+b) Click on "Advanced search". You will end up in a page like this:
+
+<img src= "img/pdb_advanced.png" width="75%">
+
+In the "Text" section --> in the "Select field" drop down menu choose ID(s) and Keywords" --> "Accession Code(s)" - Uniprot" and paste the MKK7 UniProt AC (**O14733**) in the text box.
+Click on "Count". 
 
 **Q:** How many structures are available for MKK7? 
-Click on "Submit Query" and inspect the structures available. 
+
+Click on the search button (bottom right) and inspect the structures available. 
 
 **Q:** Which one seems the most appropriate for our purposes?
 
-Notice that there are 19 structures at the moment of updating these materials (March 2020). Examine the features of all the proteins available (are they whole proteins? are they mutants? What method was used to determine their structure? What resolution?) and check whether you can easily identify one ore more structures with the requisites listed above. 
+Notice that there are 19 structures at the moment of updating these materials (May 2020). Examine the features of all the proteins available (are they whole proteins? are they mutants? What method was used to determine their structure? What resolution?) and check whether you can easily identify one ore more structures with the requisites listed above. 
 
-c) Click on "Refine search".
-Use the "Advanced search" interface to get rid of structures with resolution higher than 2.2 Angstrom AND of structures that have a ligand. To this aim, you have to add a search criterium for X-Ray resolution (set resolution between 0.1 and 2.2), a search criterium for "Has ligand(s)", and a search criterium for "Has modified residue(s)".
+Use the "Advanced search" at the top of the page to add a filter to get rid of structures with resolution higher than 2.2 Angstrom:
 
-d) Click on "Submit Query".
-**Q:** Which structures fullfil all search criteria you have used? If there are more than one, pick the one with better X-Ray resolution and/or the conformation that seems more appropriate for docking needs. 
+<img src="img/pdb_advanced_resolution.png" width="75%"> 
 
-e) Download the PDB file of the selected structure.
+Click on the search button (bottom right) and inspect the structures available. Examine the remaining structures:
 
+**Q:** How many structures are found? Which of them do not contain mutations? Which ones are not in complex with a ligand (apart from water)? 
+
+If you find more than one structure fulfilling the input criteria, pick the one with the lowest resolution. Download the PDB file of the selected structure.
 
 ### 3. Identify appropriate restraints to limit the number of docking conformations
 Structural models of complexes are more reliable if you can apply "restraints". Restraints can enormously reduce the configuration space size (making the program run faster) and direct the search towards more likely solutions. Restraints can be of many different types: a known or likely bond between two residues (one belonging to the receptor and the other one to the ligand), actraction/repulsion properties of one or more residues in one structure or both, etc. In many cases, we just know two proteins do interact but we have no idea about possible restraints. However, in some cases, restraints can be extracted from what we know about the interaction mechanism (from the literature or from experiments carried out in your lab). 

@@ -8,11 +8,11 @@ minutes: 1h30
 ------------
 
 > ## Learning Outcomes
->
-> * Learners can describe Chimera's basic features
-> * Learners can upload a structure (e.g. a ClusPro model)
-> * Learners can select one or more residues
-> * Learners can calculate atomic distances
+> At the end of this tutorial, successful learners will be able to:
+> * describe Chimera's basic features
+> * upload a structure (e.g. a ClusPro model)
+> * select one or more residues
+> * calculate atomic distances
 > 
 > 
 > ## Goal of this task
