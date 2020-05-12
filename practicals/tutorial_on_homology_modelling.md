@@ -20,13 +20,12 @@ minutes: 45
 ------------
 
 > ## Learning Outcomes
-> By the end of this lesson, the learner will be able to:
+> By the end of this tutorial, the learner will be able to:
 > * List and discuss the Homology modelling principles
 > * Describe the tools for homology modelling available at https://toolkit.tuebingen.mpg.de/#/
 > * Justify the choice of a given template over the others
 > * Build the homology model of Gadd45β using HHPred 
 > * Do model quality assessment using QMEAN
-> * Point to relevant information on how to get help.
 
 ------------
 
@@ -231,16 +230,19 @@ In protein structure prediction, a considerable number of alternative models are
 QMEAN was tested on several standard decoy sets including a molecular dynamics simulation decoy set as well as on a comprehensive data set of totally 22,420 models from server predictions for the 95 targets of CASP7. In a comparison to five well-established model quality assessment programs, QMEAN shows a statistically significant improvement over nearly all quality measures describing the ability of the scoring function to identify the native structure and to discriminate good from bad models. The three-residue torsion angle potential turned out to be very effective in recognizing the native fold (Benkert P, Tosatto SC, Schomburg D. Proteins. 2008 Apr;71(1):261-77).
 
 
-Go to the help page of the [QMEAN Server for Model Quality Estimation](http://swissmodel.expasy.org/qmean/cgi/index.cgi) and carefully read it. Then go to the [Submit new](http://swissmodel.expasy.org/qmean) page, provide a name for your project (I suggest gadd45B_model_quality) and upload the gadd45B_model.pdb file and submit your job. Notice that the quality assessment may take some time. The QMEAN output is described below. Try to find out what is the quality of your model using the QMEAN help pages.
+Go to the help page of the [QMEAN Server for Model Quality Estimation](https://swissmodel.expasy.org/qmean/help) and carefully read it. Then go to the [Submit new](http://swissmodel.expasy.org/qmean) page, provide a name for your project (I suggest gadd45B_model_quality) and upload the gadd45B_model.pdb file and submit your job. Notice that the quality assessment may take some time. The QMEAN output is described below. Try to find out what is the quality of your model using the QMEAN help pages.
 
+Results for gadd45B_model.pdb:
 
-<img src= "img/qmean_1.png" width="50%"><img src= "img/qmean_2.png" width="50%">
+<img src= "img/qmean_gadd_results.png" width="100%">
 
-<img src= "img/qmean_3.png" width="50%"><img src= "img/qmean_4.png" width="50%">
+From QMEAN help:
 
-<img src= "img/qmean_5.png" width="50%"><img src= "img/qmean_6.png" width="50%">
+<img src= "img/qmean_3D_structure.png" width="50%">
+<img src= "img/qmean_sequence.png" width="75%">
+<img src= "img/qmean_local_quality_estimate.png" width="50%">
+<img src= "img/qmean_quality_comparison.png" width="70%">
 
-<img src= "img/qmean_7.png" width="70%">
 
 
 # References
