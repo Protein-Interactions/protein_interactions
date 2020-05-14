@@ -189,18 +189,25 @@ For your convenience, you can find below a table summarising this information.
 
 
 ## ClusPro
+
+> ## About ClusPro
+> #### From (Kozakov et al. 2017)
 * The first fully automated, web-based program for the computational docking of protein structures; 
+* The server performs three computational steps as follows:
+	* (1) rigid docking by sampling billions of conformations, 
+	* (2) root-mean-square deviation (RMSD) based clustering of the 1000 lowest energy structures generated to find the largest clusters that will represent the most likely models of the complex, and 
+	* (3) refinement of selected structures using energy minimization 
 * The docking algorithms evaluate billions of putative complexes, retaining a preset number with favorable surface complementarities; 
 * A filtering method is then applied to this set of structures, selecting those with good electrostatic and desolvation free energies for further clustering; 
+* The rigid body docking step uses **PIPER**, a docking program based on the Fast Fourier Transform (FFT) correlation approach (Katchalski-Katzir et al. 1992). 
+* The FFT approach, introduced by Katchalski-Katzir and co-workers  in 1992, led to major progress in rigid body protein-protein docking. In this method, one of the proteins (which we will call the receptor) is placed at the origin of the coordinate system on a fixed grid, the second protein (which we will call the ligand) is placed on a movable grid, and the interaction energy is written in the form of a correlation function (or as a sum of a few correlation functions).
+* The numerical efficiency of the methods stems from the fact that such energy functions can be efficiently calculated using Fast Fourier Transforms, and results in the ability of exhaustively sampling billions of the conformations of the two interacting protein, evaluating the energies at each grid point. 
+* Thus, the FFT based algorithm enables docking of proteins without any a priori information on the structure of the complex.
+* One of the distinguishing characteristics of PIPER, the docking program used in ClusPro, is that this implementation of the FFT correlation method employs a scoring function that includes a structure-based pairwise interaction term (accounting for shape complementarity), and a combination of terms representing electrostatic and desolvation contributions.
+* Rigid body methods including PIPER perform exhaustive sampling of the conformational space on a dense grid, and hence certainly sample some near-native structures. However, the need for tolerating some steric clashes due to docking unbound protein structures requires the use of approximate scoring functions, and reducing sensitivity to conformational differences also reduces specificity. Therefore, the docked conformations that are close to the native structure do not necessarily have the lowest energies, whereas low energy conformations may occur far from the X-ray structures.
 * The program output is a short list of putative complexes ranked according to their clustering properties;
 * **User Input**: PDB files of the 2 protein structures 
-* **Output**: 10 (default) top predictions of docked conformations close to the native structure;
-* Rigid body docking is performed using  2 established FFT-based docking programs (DOT and ZDOCK);
-* The scoring is solely based on the surface complementarity between the two structures;
-* Over 2.7x10<sup>10</sup> structures are evaluated, retaining 20 000 structures with the best surface complementarity scores, which are then further subjected to an empirical free energy filtering algorithm;
-* The top 2000 energetically favorable structures are clustered on the basis of a pairwise binding site root mean squared deviation (RMSD) criterion;
-* **Clusters** are then formed by selecting the ligand that has the most neighbors below a previously selected clustering radius; 
-* The ligand with the most neighbors is the cluster center, and is the representative structure for the cluster.
+* **Output**: <= 10 (default) top predictions of docked conformations close to the native structure;
 
 
 ## Down to business: modelling the Gadd45β-MKK7 complex using ClusPro
@@ -319,7 +326,7 @@ This is the file you have to upload to ClusPro Restraints option. Then, you can 
 ## Analysis of ClusPro results
 The goal of ClusPro results' analyses is to identify, among the large number of docking conformations, those better fullfilling the restraints you have imposed. First, we have to navigate the ClusPro output page and identify sets of solutions ("models") we will download and further inspect. 
 The inspection of the docking models will be carried out using the [UCSF Chimera](https://www.cgl.ucsf.edu/chimera/) program for the interactive visualization and analysis of molecular structures. The docking results' analysis using UCSF Chimera is described in the [tutorial on docking results analysis using UCSF Chimera] (tutorial_on_docking_results_using_chimera.md). If you are familiar with a different molecular graphics program (e.g. PyMol), don't hesitate to use it.
- 
+
 In the ClusPro output page you can:
 
 ### 1. Review the details of your Job 
@@ -328,9 +335,54 @@ In the ClusPro output page you can:
 
 **Q:** What options have you used?
 
+> ## Better understanding ClusPro results
+> #### From (Kozakov et al. 2017)
+> 
+> ### Scoring function
+> 
+> PIPER represents the interaction energy between two proteins using an expression of the form: 
+> 
+> E = w1\*Erep + w2\*Eattr + w3\*Eelec + w4\*EDARS
+> 
+> where:
+> - Erep and Eattr denote the repulsive and attractive contributions to the van der Waals interaction energy
+> - Eelec is an electrostatic energy term 
+> - EDARS is a pairwise structure-based potential constructed by the
+Decoys as the Reference State (DARS) approach (Chuang et al. 2008), and it primarily represents desolvation contributions, i.e., the free energy change due to the removal of the water molecules from the interface. 
+> - The coefficients w1, w2, w3, and w4 define the weights of the corresponding terms, and are optimally selected for different types of docking problems. 
+> 
+> Unless specified otherwise in Advanced Options, the server generates four sets of models using the scoring schemes called (1) balanced, (2) electrostatic-favored, (3) hydrophobic-favored, and (4) van der Waals + electrostatics. 
+
+>  
+> ### Clustering of solutions
+> 
+> In PIPER we retain the 1000 lowest energy docked structures for further processing and hope that this set includes at least some that are close to the native structure of the complex. 
+> The second step of ClusPro is clustering the lowest energy 1000 docked structures using pairwise IRMSD as the distance measure.
+> 
+> 
+> 
+> 
+> The size of each cluster represents the width of the corresponding energy well, and hence provides some information on entropic contributions to the free energy.
+>  While the largest clusters do not necessarily contain the most near-native structures, we have shown that the 30 largest clusters include near-native structures for 92% of complexes in a protein-protein benchmark set. 
+> However, the success rates are higher for certain classes of complexes such as enzyme-inhibitor pairs, and hence it is generally sufficient to retain only ten or fewer highly populated clusters.
+> Another unique feature of ClusPro is that we select the centers of highly populated clusters of the low energy structures rather than simply the lowest energy conformations as predictions of the complex.
+> We calculate IRMSD values for each pair among the 1000 structures, and find the structure that has the highest number of neighbors within 9Å IRMSD radius. 
+> The selected structure will be defined as the center of the first cluster, and the structures within the 9Å IRMSD neighborhood of the center will constitute the first cluster. The members of this cluster are then removed, and we select the structure with the highest number of neighbors within the 9Å IRMSD radius among the remaining
+structures as the next cluster center.
+> These neighbors will form the next cluster. Up to 30 clusters are generated in this manner. After clustering we minimize the energy of the retained structures for 300 step with fixed backbone using only the van der Waals term of the Charmm potential.
+> The minimization removes the steric overlaps but generally yields only very small conformational changes. 
+> In its basic operation ClusPro outputs the structures at the centers of the 10 most populated clusters.
+> 
+> Note that to define the IRMSD of a docked structure from the native complex we first select the interface residues as the ligand residues that have any atom within 10 Å of any receptor atom. Then we superimpose the receptors in the two structures, and calculate the Cα RMSD for the selected interface residues. 
+> 
+
+
+ 
+
+
 ### 2. View the Model Scores 
-The most important aspect is to check whether there are docking solutions that form large clusters.
-In our case, mkk7-gadd45b Cluster 0 has XXX members (balanced), XXX (Electrostatic-favored), XXX (Hydrophobic-favored); XXX (WdW+Elec)
+The most important aspect is to check whether there are docking solutions that form large clus ters.
+In this example, mkk7-gadd45b Cluster 0 has 450 members (balanced), 393 (Electrostatic-favored), 484 (Hydrophobic-favored); 589 (WdW+Elec)
 
 In principle, we expect the best solution to be a conformation belonging to the largest cluster. 
 However, there are other parameters that count. An important one is whether the predicted complex fulfils the input restraints, i.e. (in our case), whether the MKK7 ATP bindig site actually interacts with Gadd45β's residues in loop 1. In order to check this, you have to inspect the models displayed in the output page (each model is a representative of a cluster) and download those that seem to have a potentially correct conformation.
@@ -341,6 +393,7 @@ As mentioned above, once you have downloaded a small number of potencially good 
 **Q:** Which could be a reasonable interacton threshold? 
 
 ### 3. "Balanced", "Electrostatic-favored", "Hydrophobic favored", or "WdW+Elec"?
+
 In the output page, you will see four different choices for your docking results, "Balanced", "Electrostatic-favored", and so on. 
 
 **Q:** Which one should you choose?
@@ -363,8 +416,11 @@ In our case, we know that interactions between MKK7 and Gadd45β occur between b
 * Camacho,C.J. and Gatchell,D. (2003) Successful discrimination of protein interactions. Proteins, 52, 92–97
 
 ##### ClusPro
+* Chuang GY, Kozakov D, Brenke R, Comeau SR, Vajda S. DARS (Decoys As the Reference State) potentials for protein-protein docking. Biophys J. 2008; 95:4217–4227. [PubMed: 18676649]
 * Comeau, S. R., D. Gatchell, S. Vajda, and C. J. Camacho. 2004. ClusPro: an automated docking and discrimination method for the prediction of protein complexes. Bioinformatics. 20:45–50
 * Kozakov D, Beglov D, Bohnuud T, Mottarella SE, Xia B, Hall DR, Vajda S. (2013) How good is automated protein docking? Proteins. 81(12):2159-66
+* Kozakov D, Hall DR, Xia B, Porter KA, Padhorny D, Yueh C, Beglov D, Vajda S. The ClusPro web server for protein-protein docking. Nature Protocols. 2017 Feb;12(2):255-278. 
+
 
 #### Haddock 
 * Dominguez C, Boelens R, Bonvin AMJJ (2003) HADDOCK:  A Protein−Protein Docking Approach Based on Biochemical or Biophysical Information. JACS 125, 1731
