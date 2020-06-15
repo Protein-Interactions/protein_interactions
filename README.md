@@ -1,4 +1,4 @@
-# Protein Interactions ALLEGRA
+# Protein Interactions
 
 ### Introduction
 The interactions among proteins and other molecules are of fundamental importance for the many biological processes that take place into living cells. Ligands can be other proteins, but also peptides, nucleic acids or small molecules.
