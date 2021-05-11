@@ -170,7 +170,7 @@ Valuable resources for homology modelling are MODELLER and SWISS-MODEL.
 ## Homology model of Gadd45β
 
 1) First, we have to identify the protein sequence of Gadd45β. 
-Go to UniProt (http://www.uniprot.org), type the Gadd45β UniProt AC (O75293) in the text box at the top and click on Search. On the result page, click on "Format" and choose the "FASTA (canonical)" format. Copy the sequence in FASTA format. 
+Go to UniProt (http://www.uniprot.org), type the Gadd45β UniProt AC ([O75293](https://www.uniprot.org/uniprot/O75293)) in the text box at the top and click on Search. On the result page, click on "Format" and choose the "FASTA (canonical)" format. Copy the sequence in FASTA format. 
 
 <img src= "img/gadd45_fasta.png" width="60%">
 
