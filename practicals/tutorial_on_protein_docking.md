@@ -45,7 +45,7 @@ Figure 9C from Papa et al.2007
 
 Before starting the actual study of the interaction, we need to do a number of things to get ready. Indeed, we need to obtain the three dimensional structure of Gadd45β and MKK7 and identify the position, in the two structures, of the interacting residues (E65, E66 and E113 on Gadd45β and K149, R162 and K157 on MKK7).
 
-At the moment of updating these materials (May 2020), a structure for Gadd45β is not available in the PDB. Therefore, we will have to build a model by homology of the protein.
+At the moment of updating these materials (May 2021), a structure for Gadd45β is not available in the PDB. Therefore, we will have to build a model by homology of the protein.
 
 ```
 Note: 
@@ -132,7 +132,7 @@ Click on the search button (bottom right) and inspect the structures available.
 
 **Q:** Which one seems the most appropriate for our purposes?
 
-Notice that there are 19 structures at the moment of updating these materials (May 2020). Examine the features of all the proteins available (are they whole proteins? are they mutants? What method was used to determine their structure? What resolution?) and check whether you can easily identify one ore more structures with the requisites listed above. 
+Notice that there are 30 structures at the moment of updating these materials (May 2021). Examine the features of all the proteins available (are they whole proteins? are they mutants? What method was used to determine their structure? What resolution?) and check whether you can easily identify one ore more structures with the requisites listed above. 
 
 Use the "Advanced search" at the top of the page to add a filter to get rid of structures with resolution higher than 2.2 Angstrom:
 
