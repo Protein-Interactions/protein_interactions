@@ -1,7 +1,7 @@
 ---
 title: Protein-protein interaction prediction using docking
 author: Allegra Via  
-last update: March 2020
+last update: May 2022
 minutes: 60 (excluding ClusPro run)
 ClusPro run: up to a few hours  
 ---
@@ -22,13 +22,13 @@ In this tutorial you are going to predict and analyse the structural complex bet
 
 ## The biological background: MKK7 and Gadd45B
 
-NF-kB/Rel factors control programmed cell death, and this control is crucial to oncogenesis, cancer chemoresistance, and antagonism of tumor necrosis factor (TNF) α-induced killing. With TNF, NF-kB-mediated protection involves suppression of the c-Jun-N-terminal kinase (JNK) cascade, and **Gadd45β**, a member of the Gadd45 family, was identified as a pivotal effector of this activity of NF-kB. Inhibition of TNFα-induced JNK signaling by Gadd45β depends on direct targeting of the JNK kinase, **MKK7/JNKK2**. The mechanism by which Gadd45β blunts MKK7, however, is unknown (Papa et al, JBC 2007, Tornatore et al, JMB 2008).
+NF-kB/Rel factors control programmed cell death, and this control is crucial to oncogenesis, cancer chemoresistance, and antagonism of tumor necrosis factor (TNF) α-induced killing. With TNF, NF-kB-mediated protection involves suppression of the c-Jun-N-terminal kinase (JNK) cascade, and **Gadd45β**, a member of the Gadd45 family [Gadd45 on wikipedia](https://en.wikipedia.org/wiki/Gadd45), was identified as a pivotal effector of this activity of NF-kB. Inhibition of TNFα-induced JNK signaling by Gadd45β depends on direct targeting of the JNK kinase, **MKK7/JNKK2**. The mechanism by which Gadd45β blunts MKK7, however, is unknown (Papa et al, JBC 2007, Tornatore et al, JMB 2008).
 
 (Papa et al, JBC 2007) modelled the interaction between Gadd45β and MKK7 and validated the model through a number of complicated mutagenesis experiments.
 
-The formation of the Gadd45β-MKK7 complex **enables insertion of the Gadd45β acidic loop 1 into the MKK7 catalytic pocket**, where this could engage in H-bonds and polar interactions with MKK7 Lys149 and other residues normally binding to the three-phosphate group of ATP. This engagement of the MKK7 ATP-binding site by Gadd45β loop 1 seems to prevent access of the kinase to ATP.
+The formation of the Gadd45β-MKK7 complex **enables insertion of the Gadd45β acidic loop 1 into the MKK7 catalytic pocket**, where this may engage in H-bonds and polar interactions with MKK7 Lys149 and other residues normally binding to the three-phosphate group of ATP. This engagement of the MKK7 ATP-binding site by Gadd45β loop 1 seems to prevent access of the kinase to ATP.
 Therefore, **the Gadd45β-MKK7 complex formation inhibits MKK7 by preventing it from binding ATP**.
-They also found that residues within putative Gadd45β acidic loops 1 and 2 – i.e. **Glu65, Glu66 and Glu113** – directly contact basic residues within the catalytic pocket of MKK7 – i.e **Lys149, Lys157 and Arg162**. In particular, as shown in the figure below (figure 9C from Papa et al. 2007), inter chain hydrogen bonds form between the following residues:
+These authors also found that residues within putative Gadd45β acidic loops 1 and 2 – i.e. **Glu65, Glu66 and Glu113** – directly contact basic residues within the catalytic pocket of MKK7 – i.e **Lys149, Lys157 and Arg162**. In particular, as shown in the figure below (figure 9C from Papa et al. 2007), inter-chain hydrogen bonds form between the following residues:
 
 MKK7 residue | Gadd45β residue
 :-------------:|:----------------:
@@ -45,7 +45,7 @@ Figure 9C from Papa et al.2007
 
 Before starting the actual study of the interaction, we need to do a number of things to get ready. Indeed, we need to obtain the three dimensional structure of Gadd45β and MKK7 and identify the position, in the two structures, of the interacting residues (E65, E66 and E113 on Gadd45β and K149, R162 and K157 on MKK7).
 
-At the moment of updating these materials (May 2021), a structure for Gadd45β is not available in the PDB. Therefore, we will have to build a model by homology of the protein.
+At the moment of updating these materials (May 2022), a structure for Gadd45β is not available in the PDB. Therefore, we will have to build a model by homology of the protein.
 
 ```
 Note: 
@@ -114,14 +114,9 @@ different from the one used for the docking experiment.
 #### Procedure to select a high-resolution PDB structure for MKK7, not in complex with ligand(s): 
 
 a) Go to the [PDB](http://www.rcsb.org/pdb/home/home.do)
-This is how the PDB homepage looks as per the moment of writing (May 2020):
+This is how the PDB homepage looks): [PDB homepage](https://www.rcsb.org/)
 
-<img src= "img/pdb_homepage.png" width="75%">
-
-
-b) Click on "Advanced search". You will end up in a page like this:
-
-<img src= "img/pdb_advanced.png" width="75%">
+b) Click on "Advanced search". You will end up in a page like this: [Advanced search page](https://www.rcsb.org/search/advanced)
 
 In the "Text" section --> in the "Select field" drop down menu choose ID(s) and Keywords" --> "Accession Code(s)" - Uniprot" and paste the MKK7 UniProt AC (**O14733**) in the text box.
 Click on "Count". 
