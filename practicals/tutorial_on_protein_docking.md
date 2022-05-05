@@ -129,9 +129,9 @@ Click on the search button (bottom right) and inspect the structures available.
 
 Notice that there are 30 structures at the moment of updating these materials (May 2021). Examine the features of all the proteins available (are they whole proteins? are they mutants? What method was used to determine their structure? What resolution?) and check whether you can easily identify one ore more structures with the requisites listed above. 
 
-Use the "Advanced search" at the top of the page to add a filter to get rid of structures with resolution higher than 2.2 Angstrom:
+Use the "Advanced search" at the top of the page to add a filter to get rid of structures with refinment resolution higher than 2.2 Angstrom:
 
-<img src="img/pdb_advanced_resolution.png" width="75%"> 
+<img src="img/pdb_advanced_resolution_2022-1.png" width="75%"> 
 
 Click on the search button (bottom right) and inspect the structures available. Examine the remaining structures:
 
