@@ -51,18 +51,17 @@ First we change name to receptor and ligand:
 ```
 select rec, rec.pdb
 ```
-<br>
+
 ```
 select lig, lig.000.00.pdb
 ```
-<br>
 
 Then we select the residues we used to create the restraints:
-<br>
+
 ```
 select rec_res,  (resi 165,178,173) and rec
 ```
-<br>
+
 ```
 select lig_res,  (resi 65,66,113) and lig
 ```
