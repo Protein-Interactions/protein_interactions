@@ -59,12 +59,13 @@ select lig, lig.000.00.pdb
 Then we select the residues we used to create the restraints:
 
 ```
-select rec_res,  (resi 165,178,173) and rec
+select rec_res, (resi 165+178+173) and rec
 ```
 
 ```
-select lig_res,  (resi 65,66,113) and lig
+select lig_res, (resi 65+66+113) and lig
 ```
+
 
 Once selections are created, you can use the right panel (where selections are listed) to play with them.
 
