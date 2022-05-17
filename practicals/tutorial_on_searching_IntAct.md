@@ -30,7 +30,7 @@ Therefore, numerous databases have been established in order to collect, archive
 #### IntAct Database
 [IntAct] (http://www.ebi.ac.uk/intact) is a publicly available repository of molecular interactions. It is hosted by the European Bioinformatics Institute (EMBL-EBI) in Hinxton, UK, where it is maintained by a group of curators and developers. It collects molecular interaction data coming either from manually curated literature or from direct data depositions. Most of the data refer to protein-protein interactions, but interactions involving other types of molecules, such as small chemical compounds or nucleic acids, can also be found in IntAct.
 
-At EMBL-EBI IntAct is the main database for molecular interactions. There are other EMBL-EBI databases that also capture interaction information, the most prominent one being ChEMBL, which hosts a large collection of small molecule-protein/drug-target interactions.
+At EMBL-EBI, IntAct is the main database for molecular interactions. There are other EMBL-EBI databases that also capture interaction information, the most prominent one being ChEMBL, which hosts a large collection of small molecule-protein/drug-target interactions.
 
 IntAct is a member of the International Molecular Exchange (IMEx) Consortium - a group of major public interaction data providers whose goal is to share curation effort and standards, and exchange completed records on molecular interaction data. When you query data in IntAct you also access over 150 million interactions in a further 31 data resources via our PSICQUIC (Proteomics Standard Initiative Common QUery InterfaCe) service or a consistently annotated, non-redundant, experimentally determined subset from the IMEx Consortium.
 
@@ -58,17 +58,20 @@ You may perform the exercise below or alternatively, you may try a protein you a
 
 Open the [IntAct homepage](http://www.ebi.ac.uk/intact) homepage in a web browser. Type in the Quick Search textbox ‘MEKK1’ and click on the Search button.
 
-**Q1: How many binary interactions can you find?**
+**Q1: How many interactions (entries) can you find?**
 
-Searching on a non-specific gene name will bring you up a mixed set of results. You can refine your search either by going back to the main page or by clicking on Advanced Search button in the menu bar at the top of the page, even if you will use it now for a simple search. Refine your search using either Q13233 or M3K1_HUMAN. 
+Searching on a non-specific gene name will bring you up a mixed set of results. 
 
-**Q2: How many binary interactions do you find by refining the search?** 
+You can refine your search in one of the following ways:
+1. go back to the main page and submit a more specific query (e.g. either Q13233 or M3K1_HUMAN if you want to search for MEKK interactions in **Homo sapiens**);
+2. use the the Filters at the top of the output page (e.g. set to Homo sapiens both "Interactor Species" and "Interaction Host Organism"
+3. go back to the main page and click on Advanced Search button in the menu bar at the top of the page. Notice that the advanced search is not yet supported in this new website (May 2022), you will therefore be redirected to the former IntAct website upon clicking on the search button.
+
+**Q2: How many interactions do you find by refining the search according to approaches 1 and 2?** 
 
 Go to the detailed view of the MEKK1 (Q13233) / BRAF (P15056) interaction that has "Protein Kinase assay" as Interaction detection Method.
 
 **Q3: Which of these proteins acts as enzyme in this reaction?** 
-
-**Q4: What is the stoichiometry?** 
  
 #### Step2: Refining your search using the Advanced Search
 
