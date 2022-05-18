@@ -63,7 +63,7 @@ Open the [IntAct homepage](http://www.ebi.ac.uk/intact) homepage in a web browse
 Searching on a non-specific gene name will bring you up a mixed set of results. 
 
 You can refine your search in one of the following ways:
-1. go back to the main page and submit a more specific query (e.g. either Q13233 or M3K1_HUMAN if you want to search for MEKK interactions in **Homo sapiens**);
+1. submit a more specific query (e.g. either Q13233 or M3K1_HUMAN if you want to search for MEKK1 interactions in **Homo sapiens**);
 2. use the the Filters at the top of the output page (e.g. set to Homo sapiens both "Interactor Species" and "Interaction Host Organism"
 3. go back to the main page and click on Advanced Search button in the menu bar at the top of the page. Notice that the advanced search is not yet supported in this new website (May 2022), you will therefore be redirected to the former IntAct website upon clicking on the search button.
 
@@ -72,34 +72,8 @@ You can refine your search in one of the following ways:
 Go to the detailed view of the MEKK1 (Q13233) / BRAF (P15056) interaction that has "Protein Kinase assay" as Interaction detection Method.
 
 **Q3: Which of these proteins acts as enzyme in this reaction?** 
- 
-#### Step2: Refining your search using the Advanced Search
 
-Using the Molecular Interaction Query Language (MIQL), available from the search panel, it is possible to perform more complex queries. This will allow you to write complex queries.
 
-Example: To discover if there is any interaction available in the database between *Plasmodium falciparum* (isolate 3D7) and human proteins: a) Clear all previous searches b) Type ‘taxidA:36329 AND taxidB:9606’.
-
-Clicking on ```Advanced search``` and then on ```Show Advanced Fields``` (on the right of the Search textbox in the IntAct homepage) opens up the Advanced Search options. Here, you can specify one or more fields you wish to search in, and build a complex query as you progress. For example, you can clear the previous search and use the ```Show Advanced Fields``` to search for ‘organism’ = human AND ‘Interaction detection method’ = surface plasmon resonance.
-
-You can start with the first search (```Advanced search``` > ```Show Advanced Fields``` > organism > human > ```Add & Search```). In the result page, you can click on "Advanced" at the top right of the page. You will end up in a partially filled (with your initial search) Advanced search input page. Here, you can add further Advanced Fields options:
-
-```Advanced search``` > ```Show Advanced Fields``` > Interaction detection method > surface plasmon resonance > ```Add & Search```
-
-Read carefully "Search Tips" and have a look at the "MIQL syntax".
-
-**Q5: How many interactions can you see for ‘organism’ = human AND ‘Interaction detection method’ = two hybrid?** 
-
-**Q6: How many interactions do you see for P53_HUMAN AND ‘Interaction type’ = physical?** 
-
-**Q7: How many interactions do you see for ABL1_HUMAN AND interaction type = direct interaction?** 
-
-Go to the ```detailed view``` of the ABL1_HUMAN (P00519) / P41 (EBI-7094147) interaction that has isothermal titration calorimetry as “Interaction detection Method”: 
-
-**Q8: Which are the Interaction Parameters associated to this interaction?** 
-
-Go back to the interaction list of the previous search and go to the ```detailed view``` of the ABL1_HUMAN (P00519) / P41 (EBI-7094147) interaction that has X-ray crystallography as “Interaction detection Method". 
-
-**Q9: Which are the "Experimental Features" of this interaction for both interactors? Which binding site and which mutation(s)?**
 
 #### Step3: visualise interactions as a network
 Go to the search page and type the PMID: 22014111. 
@@ -121,6 +95,35 @@ Search for all the human PPIs present in IntAct using the quick or advanced sear
 Go to the Download page and download all the PPIs from the “Virus” dataset in PSI2.5 format. 
 
 **Q13: How many articles are associated to this dataset? How many interactions?** 
+
+>
+>#### Step2: Refining your search using the Advanced Search
+>
+>Using the Molecular Interaction Query Language (MIQL), available from the search panel, it is possible to perform more complex queries. This will allow you to write complex queries.
+>Example: To discover if there is any interaction available in the database between *Plasmodium falciparum* (isolate 3D7) and human proteins: a) Clear all previous searches b) Type ‘taxidA:36329 AND taxidB:9606’.
+
+>Clicking on ```Advanced search``` and then on ```Show Advanced Fields``` (on the right of the Search textbox in the IntAct homepage) opens up the Advanced Search options. Here, you can specify one or more fields you wish to search in, and build a complex query as you progress. For example, you can clear the previous search and use the ```Show Advanced Fields``` to search for ‘organism’ = human AND ‘Interaction detection method’ = surface plasmon resonance.
+
+>You can start with the first search (```Advanced search``` > ```Show Advanced Fields``` > organism > human > ```Add & Search```). In the result page, you can click on "Advanced" at the top right of the page. You will end up in a partially filled (with your initial search) Advanced search input page. Here, you can add further Advanced Fields options:
+
+>```Advanced search``` > ```Show Advanced Fields``` > Interaction detection method > surface plasmon resonance > ```Add & Search```
+
+>Read carefully "Search Tips" and have a look at the "MIQL syntax".
+
+>**Q5: How many interactions can you see for ‘organism’ = human AND ‘Interaction detection method’ = two hybrid?** 
+
+>**Q6: How many interactions do you see for P53_HUMAN AND ‘Interaction type’ = physical?** 
+
+**Q7: How many interactions do you see for ABL1_HUMAN AND interaction type = direct interaction?** 
+
+Go to the ```detailed view``` of the ABL1_HUMAN (P00519) / P41 (EBI-7094147) interaction that has isothermal titration calorimetry as “Interaction detection Method”: 
+
+**Q8: Which are the Interaction Parameters associated to this interaction?** 
+
+Go back to the interaction list of the previous search and go to the ```detailed view``` of the ABL1_HUMAN (P00519) / P41 (EBI-7094147) interaction that has X-ray crystallography as “Interaction detection Method". 
+
+**Q9: Which are the "Experimental Features" of this interaction for both interactors? Which binding site and which mutation(s)?**
+
 
 
 
