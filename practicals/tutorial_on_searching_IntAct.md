@@ -89,11 +89,12 @@ Observe the interaction network and the 162 entries.
 
 If you have time, you can also try the following: 
 
-Search for all the human PPIs present in IntAct using the quick or advanced search (see below).
+Search all the human PPIs present in IntAct using the quick or advanced search (see below).
+
 **Q7: Export the interactions found as MITAB 2.7**
 
 Have a look at the COVID-19 dataset and try to browse Intact for COVID-19 data. Apply some filters.
-Try to understand what type of information you can extract from this search. 
+Try to understand what type of information you can extract from the results of this search. 
 
 >#### Currently (May 2022) [advanced searches](https://www.ebi.ac.uk/legacy-intact/search) can be performed at the [legacy version of Intact](https://www.ebi.ac.uk/legacy-intact/). 
 >If you have time, you may want to learn how to perform Advanced Searches:
@@ -111,19 +112,19 @@ Try to understand what type of information you can extract from this search.
 
 >Read carefully "Search Tips" and have a look at the "MIQL syntax".
 
->**Q5: How many interactions can you see for ‘organism’ = human AND ‘Interaction detection method’ = two hybrid?** 
+>**Q8: How many interactions can you see for ‘organism’ = human AND ‘Interaction detection method’ = two hybrid?** 
 
->**Q6: How many interactions do you see for P53_HUMAN AND ‘Interaction type’ = physical?** 
+>**Q9: How many interactions do you see for P53_HUMAN AND ‘Interaction type’ = physical?** 
 
->**Q7: How many interactions do you see for ABL1_HUMAN AND interaction type = direct interaction?** 
+>**Q10: How many interactions do you see for ABL1_HUMAN AND interaction type = direct interaction?** 
 
 >Go to the ```detailed view``` of the ABL1_HUMAN (P00519) / P41 (EBI-7094147) interaction that has isothermal titration calorimetry as “Interaction detection Method”: 
 
->**Q8: Which are the Interaction Parameters associated to this interaction?** 
+>**Q11: Which are the Interaction Parameters associated to this interaction?** 
 
 >Go back to the interaction list of the previous search and go to the ```detailed view``` of the ABL1_HUMAN (P00519) / P41 (EBI-7094147) interaction that has X-ray crystallography as “Interaction detection Method". 
 
->**Q9: Which are the "Experimental Features" of this interaction for both interactors? Which binding site and which mutation(s)?**
+>**Q12: Which are the "Experimental Features" of this interaction for both interactors? Which binding site and which mutation(s)?**
 >
 
 
