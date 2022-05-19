@@ -46,6 +46,9 @@ From the [main page of STRING](https://string-db.org/), you can perform a search
 - by sequence
 - by multiple names
 - by multiple sequences
+- by proteins with values/rank (from your experiment)
+- by organism
+- by Protein families
 
 In the first case, the user can insert the common name of the protein of interest, its scientific name or any accession number from other databases. 
 
@@ -86,10 +89,9 @@ If you search STRING with EGFR_HUMAN (Uniprot ID), you will directly get the res
 
 **Q1: How many interaction partners can you see?**
 
-Click on "Legend".
+Click on "Legend" and read the meaning of Node Color, Node Content, Edges, etc.
 
-**Q2: What is the meaning of the different colours of the nodes (proteins)?
-**
+**Q2: What is the meaning of the different colours of the nodes (proteins)?**
 
 **Q3: What is the meaning of the different colours of the edges (interactions)?**
 
