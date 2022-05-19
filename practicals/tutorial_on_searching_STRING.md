@@ -31,21 +31,16 @@ Data are derived from five main sources:
 - Previous Knowledge in Databases
 
 It is a secondary database, that is a curated database consisting of data derived from analysis of DNA sequences, protein sequences, and structures (from resources like DIP, KEGG, GO and BioGRID).
-The database is collectively curated by EMBL, CPR and KU (Copenhagen), SIB, TUD (Dresden), and UZH (Zurich); it covers 9643763 proteins from 2031 different organisms.
-Online data search and most flat files are free under Creative Commons License, but the full database and resources are released under license requirements for commercial uses; institutions can ask for customized data collections behind payment.
-
-It has two sister projects based on the data contained in STRING:
-• STITCH, a database of chemical-protein interactions
-• EggNOG, a database for functional annotation of orthologous groups.
-
+The database is collectively curated by EMBL, CPR and KU (Copenhagen), SIB, TUD (Dresden), and UZH (Zurich); it covers >20 bln interactions from >14000 different organisms (see [STRING homepage](https://string-db.org/)).
+All data and download files in STRING are freely available under a 'Creative Commons BY 4.0' license. When using the data, users are asked to provide appropriate credit — and inform their users of any changes or additions that they might have made to the data.
 
 #### Coverage
-The STRING database currently (March 2020) covers 24'584'628 proteins from 5'090 organisms.
+The STRING database currently (May 2020) covers 67.7 million proteins from more than 14000 organisms.
 
 
 ### How to do perform a search using STRING
 
-From the main page of STRING, you can perform a search:
+From the [main page of STRING](https://string-db.org/), you can perform a search by clicking on the SEARCH button.
 
 - by name
 - by sequence
