@@ -35,7 +35,7 @@ The database is collectively curated by EMBL, CPR and KU (Copenhagen), SIB, TUD 
 All data and download files in STRING are freely available under a 'Creative Commons BY 4.0' license. When using the data, users are asked to provide appropriate credit — and inform their users of any changes or additions that they might have made to the data.
 
 #### Coverage
-The STRING database currently (May 2020) covers 67.7 million proteins from more than 14000 organisms.
+The STRING database currently (May 2022) covers 67.7 million proteins from more than 14000 organisms.
 
 
 ### How to do perform a search using STRING
