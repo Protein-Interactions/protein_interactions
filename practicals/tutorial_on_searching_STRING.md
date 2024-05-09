@@ -31,11 +31,11 @@ Data are derived from five main sources:
 - Previous Knowledge in Databases
 
 It is a secondary database, that is a curated database consisting of data derived from analysis of DNA sequences, protein sequences, and structures (from resources like DIP, KEGG, GO and BioGRID).
-The database is collectively curated by EMBL, CPR and KU (Copenhagen), SIB, TUD (Dresden), and UZH (Zurich); it covers >20 bln interactions from >14000 different organisms (see [STRING homepage](https://string-db.org/)).
+The database is collectively curated by EMBL, CPR and KU (Copenhagen), SIB, TUD (Dresden), and UZH (Zurich); it covers >20 bln interactions from >12.500 different organisms (see [STRING homepage](https://string-db.org/)).
 All data and download files in STRING are freely available under a 'Creative Commons BY 4.0' license. When using the data, users are asked to provide appropriate credit — and inform their users of any changes or additions that they might have made to the data.
 
 #### Coverage
-The STRING database currently (May 2022) covers 67.7 million proteins from more than 14000 organisms.
+The STRING database currently (May 2024) covers 59.3 million proteins from more than 12.500 organisms.
 
 
 ### How to do perform a search using STRING
